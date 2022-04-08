@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
+<script src="grid.js"></script>
+<script src="world.js"></script>
+<script src="robot.js"></script>
+<script src="beeper.js"></script>
+<title>U4A1 Demo</title>
+</head>
+<body>
+<div id="header" style="text-align: center">
+    <button id="startBtn" onclick="document.getElementById('startBtn').disabled = 'true'; start()">Start</button>
+</div>
+<div id="konvaCanvas"></div>
+<script>
+	'use strict'
+
+    let stage = new Konva.Stage({
+        container: 'konvaCanvas',
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+    let layer = new Konva.Layer();
+	stage.add(layer); // add the layer to the stage
+
+    const playTween = (config) => {
+        return new Promise(function(resolve, reject) {
+                
+            var tween = new Konva.Tween({
+                ...config,
+                onFinish: resolve
+            });
+            tween.play()                
+
+        })
+    }
+
+    
+
+    //----- Ignore everything above here for now -----//
+
+    let world = new World()
+    let karl = new Robot(world, 100, 100, "green")
+    let bob = new Robot(world, 200, 200, "red")
+
+    async function start() {
+
+        bob.move()
+        await karl.move()
+        karl.scale = 2
+        karl.redraw()
+        await karl.turnRight()
+        karl.color = "blue"
+        karl.redraw()
+        await karl.pickUpBeeper()
+        await karl.turnRight()
+    }
+
+    
+
+    //----- Ignore everything below here for now -----//
+
+</script>
+</body>
+</html>
