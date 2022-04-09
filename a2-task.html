@@ -5,7 +5,7 @@
 <script src="lib/grid.js"></script>
 <script src="lib/world.js"></script>
 <script src="lib/robot.js"></script>
-<title>U4A1 Demo</title>
+<title>U4A2 Task</title>
 </head>
 <body>
 <div id="header" style="text-align: center">
@@ -21,29 +21,25 @@
         height: window.innerHeight
     });
     let layer = new Konva.Layer();
-	stage.add(layer); // add the layer to the stage
-    
+    stage.add(layer); // add the layer to the stage
+
 
     //----- Ignore everything above here for now -----//
 
-    let world = new World()
-    let karl = new Robot(world, 100, 50, "green")
+    // Create your world and robots here:
 
-    world.addBeeper(200, 50)
-    world.addBeeper(200, 200)
-    world.addBeeper(50, 200)
-    world.addBeeper(50, 50)
+
+    // Add beepers to your world here:
+
 
     async function start() {
 
-        karl.turnRight()
-        while (!karl.isOnBeeper()) {
-            await karl.move(1)
-        }
+        // Add action code here:
 
     }
 
     //----- Ignore everything below here for now -----//
+
 
 </script>
 </body>

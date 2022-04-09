@@ -5,7 +5,7 @@
 <script src="lib/grid.js"></script>
 <script src="lib/world.js"></script>
 <script src="lib/robot.js"></script>
-<title>U4A1 Demo</title>
+<title>U4A4 Demo</title>
 </head>
 <body>
 <div id="header" style="text-align: center">
@@ -27,19 +27,15 @@
     //----- Ignore everything above here for now -----//
 
     let world = new World()
-    let karl = new Robot(world, 100, 50, "green")
+    let karl = new Robot(world, 100, 200, "green")
 
-    world.addBeeper(200, 50)
-    world.addBeeper(200, 200)
-    world.addBeeper(50, 200)
-    world.addBeeper(50, 50)
+    world.addBeeper(100, 150)
+    world.addBeeper(200, 150)
+    world.addBeeper(300, 150)
 
     async function start() {
 
-        karl.turnRight()
-        while (!karl.isOnBeeper()) {
-            await karl.move(1)
-        }
+        // Start coding here:
 
     }
 
