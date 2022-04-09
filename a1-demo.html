@@ -5,7 +5,6 @@
 <script src="grid.js"></script>
 <script src="world.js"></script>
 <script src="robot.js"></script>
-<script src="beeper.js"></script>
 <title>U4A1 Demo</title>
 </head>
 <body>
@@ -40,22 +39,21 @@
 
     //----- Ignore everything above here for now -----//
 
+    let world = new World()
+    let karl = new Robot(world, 100, 200, "green")
+    let bob = new Robot(world, 200, 200, "red")
 
+    world.addBeeper(100, 150)
+    //world.addBeeper(100, 100)
 
     async function start() {
 
-        let world = new World()
-        let karl = new Robot(world, 100, 100, "green")
-        let bob = new Robot(world, 200, 200, "red")
-
-        world.addBeeper(100, 50)
-
-        karl.speed = 200
         await karl.move(1)
         await karl.pickUpBeeper()
-        karl.turnRight()
-        await karl.move(5)
-
+        await karl.move(1)
+        await karl.dropBeeper()
+        await karl.move(1)
+        //await karl.dropBeeper()
 
         // bob.move()
         // await karl.move()
