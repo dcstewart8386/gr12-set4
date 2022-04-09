@@ -26,17 +26,45 @@
 
     //----- Ignore everything above here for now -----//
 
-    let world = new World()
-    let karl = new Robot(world, 100, 200, "green")
+    class DancingRobot extends Robot {
+        constructor(world, x, y, color) {
+            super(world, x, y, color)
+        }
 
-    world.addBeeper(100, 150)
-    world.addBeeper(200, 150)
-    world.addBeeper(300, 150)
+        async dance() {
+            let originalColor = this.color
+            let originalSpeed = this.speed
+            this.speed = 300
+            this.color = "yellow"
+            this.redraw()
+            await this.turnLeft()
+            this.color = "blue"
+            this.redraw()
+            await this.turnLeft()
+            this.color = "green"
+            this.redraw()
+            await this.turnLeft()
+            this.color = "pink"
+            this.redraw()
+            await this.turnLeft()
+            this.color = originalColor
+            this.redraw()
+            this.speed = originalSpeed
+        }
+
+    }
+
+
+    let world = new World()
+    let karl = new DancingRobot(world, 100, 200, "gray")
 
     async function start() {
 
         // Start coding here:
-
+        await karl.move(1)
+        await karl.dance()
+        await karl.move(2)
+        await karl.dance()
     }
 
     //----- Ignore everything below here for now -----//
