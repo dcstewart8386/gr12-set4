@@ -52,18 +52,26 @@ class Robot {
     }
 
     move() {
-        this.y -= 50
+        if (this.getDirection() == "up")
+            this.y -= 50
+        if (this.getDirection() == "down")
+            this.y += 50
+        if (this.getDirection() == "left")
+            this.x -= 50
+        if (this.getDirection() == "right")
+            this.x += 50
 
         return playTween({
             node: this.konvaGroup,
             duration: 0.5,
+            x: this.x,
             y: this.y
         })
 
     }
 
     turnRight() {
-        this.#rotation += 90
+        this.#rotation = (this.#rotation + 90) % 360
 
         return playTween({
             node: this.konvaGroup,
@@ -72,5 +80,15 @@ class Robot {
         })
     }
 
+    getDirection() {
+        if (this.#rotation == 60) 
+            return "up"
+        if (this.#rotation == 150) 
+            return "right"
+        if (this.#rotation == 240) 
+            return "down"
+        if (this.#rotation == 330) 
+            return "left"
+    }
 
 }

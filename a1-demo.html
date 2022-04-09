@@ -40,21 +40,30 @@
 
     //----- Ignore everything above here for now -----//
 
-    let world = new World()
-    let karl = new Robot(world, 100, 100, "green")
-    let bob = new Robot(world, 200, 200, "red")
+
 
     async function start() {
 
-        bob.move()
-        await karl.move()
-        karl.scale = 2
-        karl.redraw()
-        await karl.turnRight()
-        karl.color = "blue"
-        karl.redraw()
-        await karl.pickUpBeeper()
-        await karl.turnRight()
+        let world = new World()
+        let karl = new Robot(world, 100, 100, "green")
+        let bob = new Robot(world, 200, 200, "red")
+
+        world.addBeeper(300, 300)
+
+        for (i = 0; i < 4; i++) {
+            await karl.move()
+            await karl.turnRight()
+        }
+
+        // bob.move()
+        // await karl.move()
+        // karl.scale = 2
+        // karl.redraw()
+        // await karl.turnRight()
+        // karl.color = "blue"
+        // karl.redraw()
+        // await karl.pickUpBeeper()
+        // await karl.turnRight()
     }
 
     
