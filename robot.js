@@ -100,7 +100,7 @@ class Robot {
     }
 
     turnRight() {
-        this.#rotation = (this.#rotation + 90) % 360
+        this.#rotation = this.#rotation + 90
 
         return playTween({
             node: this.#konvaGroup,
@@ -110,8 +110,7 @@ class Robot {
     }
 
     turnLeft() {
-        this.#rotation = (this.#rotation - 90 + 360) % 360
-        console.log(this.#rotation)
+        this.#rotation = this.#rotation - 90
 
         return playTween({
             node: this.#konvaGroup,
@@ -121,13 +120,13 @@ class Robot {
     }
 
     getDirection() {
-        if (this.#rotation == 60) 
+        if (this.#rotation % 360 == 60 || this.#rotation % 360 == -300) 
             return "up"
-        if (this.#rotation == 150) 
+        if (this.#rotation % 360  == 150 || this.#rotation % 360 == -210) 
             return "right"
-        if (this.#rotation == 240) 
+        if (this.#rotation % 360  == 240 || this.#rotation % 360 == -120) 
             return "down"
-        if (this.#rotation == 330) 
+        if (this.#rotation % 360  == 330 || this.#rotation % 360 == -30) 
             return "left"
     }
 
