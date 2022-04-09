@@ -8,9 +8,6 @@
 <title>U4A4 Task</title>
 </head>
 <body>
-<div id="header" style="text-align: center">
-    <button id="startBtn" onclick="document.getElementById('startBtn').disabled = 'true'; start()">Start</button>
-</div>
 <div id="konvaCanvas"></div>
 <script>
 	'use strict'
@@ -22,24 +19,15 @@
     });
     let layer = new Konva.Layer();
 	stage.add(layer); // add the layer to the stage
-    
+    addGrid(Konva, layer)
 
     //----- Ignore everything above here for now -----//
 
-    // Create your world and robots here:
+    // Add your code here:
 
 
-    // Add beepers to your world here:
-
-
-    async function start() {
-
-        // Add action code here:
-
-    }
-
+ 
     //----- Ignore everything below here for now -----//
-
 </script>
 </body>
 </html>

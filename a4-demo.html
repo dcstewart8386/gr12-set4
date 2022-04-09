@@ -3,14 +3,9 @@
 <head>
 <script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
 <script src="lib/grid.js"></script>
-<script src="lib/world.js"></script>
-<script src="lib/robot.js"></script>
 <title>U4A4 Demo</title>
 </head>
 <body>
-<div id="header" style="text-align: center">
-    <button id="startBtn" onclick="document.getElementById('startBtn').disabled = 'true'; start()">Start</button>
-</div>
 <div id="konvaCanvas"></div>
 <script>
 	'use strict'
@@ -22,23 +17,27 @@
     });
     let layer = new Konva.Layer();
 	stage.add(layer); // add the layer to the stage
-    
+    addGrid(Konva, layer)
 
     //----- Ignore everything above here for now -----//
 
-    let world = new World()
-    let karl = new Robot(world, 100, 200, "green")
+    class Triangle extends Konva.RegularPolygon {
+        constructor(x, y, size, color) {
 
-    world.addBeeper(100, 150)
-    world.addBeeper(200, 150)
-    world.addBeeper(300, 150)
-
-    async function start() {
-
-        // Start coding here:
-
+            // Call Konva's RegularPolygon constructor
+            super({
+                x: x,
+                y: y,
+                sides: 3,
+                radius: size,
+                fill: color,
+            })
+        }
     }
 
+    let triangle = new Triangle(200, 200, 50, "blue")
+    layer.add(triangle)
+ 
     //----- Ignore everything below here for now -----//
 
 </script>
