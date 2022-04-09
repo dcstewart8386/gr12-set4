@@ -26,17 +26,48 @@
 
     //----- Ignore everything above here for now -----//
 
-    // Create your world and robots here:
+    class SmarterRobot extends Robot {
+        constructor(world, x, y, color) {
+            super(world, x, y, color)
+        }
+
+        async turnAround() {
+
+        }
+
+        setColor(color) {
+
+        }
+
+        setScale(scale) {
+
+        }
+
+        tryPickUpBeeper() {
+
+        }
+
+        tryPutDownBeeper() {
+
+        }
+
+        async spin(numTimes)  {
+
+        }
+
+    }
 
 
-    // Add beepers to your world here:
-
+    let world = new World()
+    world.addBeeper(100, 100)
+    let karl = new SmarterRobot(world, 100, 200, "gray")
 
     async function start() {
 
-        // Add action code here:
+        // Test your new class methods here
 
     }
+
 
     //----- Ignore everything below here for now -----//
 
