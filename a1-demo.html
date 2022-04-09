@@ -22,19 +22,6 @@
     });
     let layer = new Konva.Layer();
 	stage.add(layer); // add the layer to the stage
-
-    const playTween = (config) => {
-        return new Promise(function(resolve, reject) {
-                
-            var tween = new Konva.Tween({
-                ...config,
-                onFinish: resolve
-            });
-            tween.play()                
-
-        })
-    }
-
     
 
     //----- Ignore everything above here for now -----//
@@ -44,29 +31,45 @@
     let bob = new Robot(world, 200, 200, "red")
 
     world.addBeeper(100, 150)
-    //world.addBeeper(100, 100)
+    world.addBeeper(400, 150)
 
     async function start() {
 
+        // Karl's moves
         await karl.move(1)
-        await karl.turnRight()
+        karl.pickUpBeeper()
         await karl.move(1)
-        await karl.turnRight()
-        await karl.move(1)
-        await karl.turnRight()
-        await karl.move(1)
-        await karl.turnRight()
+        karl.dropBeeper()
         await karl.move(1)
 
-        // bob.move()
-        // await karl.move()
-        // karl.scale = 2
-        // karl.redraw()
-        // await karl.turnRight()
-        // karl.color = "blue"
-        // karl.redraw()
-        // await karl.pickUpBeeper()
-        // await karl.turnRight()
+        // Bob's moves
+        await bob.move(1)
+        await bob.turnRight()
+        await bob.move(4)
+        bob.pickUpBeeper()
+        await bob.turnLeft()
+        await bob.move(1)
+        bob.dropBeeper()
+        await bob.move(1)
+
+        // Moves together
+        karl.turnRight()
+        await bob.turnLeft()
+        karl.turnRight()
+        await bob.turnLeft()
+        karl.speed = 200
+        bob.speed = 200
+        karl.move(8)
+        await bob.move(8)
+        karl.turnLeft()
+        await bob.turnRight()
+        karl.color = "yellow"
+        karl.redraw() // We need to redraw if we change colour or scale
+        bob.color = "yellow"
+        bob.redraw()
+        karl.move(3)
+        await bob.move(3)
+
     }
 
     

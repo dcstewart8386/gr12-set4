@@ -77,6 +77,10 @@ class Robot {
         this.#beeper.visible(false)
     }
 
+    isOnBeeper() {
+        return this.#world.hasBeeperAt(this.#x, this.#y)
+    }
+
     move(numSteps) {
         if (typeof numSteps != "number")
             throw new Error("A robot's move method must be given 1 numerical parameter")
@@ -130,4 +134,17 @@ class Robot {
             return "left"
     }
 
+}
+
+
+const playTween = (config) => {
+    return new Promise(function(resolve, reject) {
+            
+        var tween = new Konva.Tween({
+            ...config,
+            onFinish: resolve
+        });
+        tween.play()                
+
+    })
 }
