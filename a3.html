@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>U4A3</title>
+<script>
+// This defines a "print" function. Don't change it!
+const print = (str) => document.write(str+"<br>")
+</script>
+</head>
+<body>
+
+<script>
+class Student {
+    constructor(fname, lname) {
+        this.first = fname
+        this.last = lname
+        this.marks = []
+    }
+
+    getFullName() {
+        return this.first+" "+this.last
+    }
+
+    addMark(mark) {
+        this.marks.push(mark)
+    }
+
+    getHighestMark() {
+        let max
+        for (i = 0; i < this.marks.length; i++) {
+            if (i == 0 || this.mark[i] > max)
+                max = this.marks[i] 
+        }
+        return max
+    }
+
+    getLowestMark() {
+        let min
+        for (i = 0; i < this.marks.length; i++) {
+            if (i == 0 || this.mark[i] < min)
+                min = this.marks[i] 
+        }
+        return min
+    }
+
+    getAverageMark() {
+        let total = 0
+        for (i = 0; i < this.marks.length; i++) {
+            total += this.marks[i]
+        }
+        return total / this.marks.length;
+    }
+
+}
+
+
+print("asdf")
+print("Hello world")
+</script>
+</body>
+</html>
