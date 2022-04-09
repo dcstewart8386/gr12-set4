@@ -78,6 +78,9 @@ class Robot {
     }
 
     move(numSteps) {
+        if (typeof numSteps != "number")
+            throw new Error("A robot's move method must be given 1 numerical parameter")
+
         if (this.getDirection() == "up")
             this.#y -= 50*numSteps
         if (this.getDirection() == "down")
@@ -98,6 +101,17 @@ class Robot {
 
     turnRight() {
         this.#rotation = (this.#rotation + 90) % 360
+
+        return playTween({
+            node: this.#konvaGroup,
+            duration: 0.5*(100/this.speed),
+            rotation: this.#rotation
+        })
+    }
+
+    turnLeft() {
+        this.#rotation = (this.#rotation - 90 + 360) % 360
+        console.log(this.#rotation)
 
         return playTween({
             node: this.#konvaGroup,

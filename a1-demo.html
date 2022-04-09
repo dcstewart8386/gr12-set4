@@ -49,11 +49,13 @@
     async function start() {
 
         await karl.move(1)
-        await karl.pickUpBeeper()
+        await karl.turnLeft()
         await karl.move(1)
-        await karl.dropBeeper()
+        await karl.turnLeft()
         await karl.move(1)
-        //await karl.dropBeeper()
+        await karl.turnLeft()
+        await karl.move(1)
+        await karl.turnLeft()
 
         // bob.move()
         // await karl.move()
