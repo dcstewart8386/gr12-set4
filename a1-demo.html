@@ -48,12 +48,14 @@
         let karl = new Robot(world, 100, 100, "green")
         let bob = new Robot(world, 200, 200, "red")
 
-        world.addBeeper(300, 300)
+        world.addBeeper(100, 50)
 
-        for (i = 0; i < 4; i++) {
-            await karl.move()
-            await karl.turnRight()
-        }
+        karl.speed = 200
+        await karl.move(1)
+        await karl.pickUpBeeper()
+        karl.turnRight()
+        await karl.move(5)
+
 
         // bob.move()
         // await karl.move()

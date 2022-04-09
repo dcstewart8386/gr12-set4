@@ -8,6 +8,7 @@ class Robot {
         this.color = color
         this.#rotation = 60   
         this.scale = 1
+        this.speed = 100
 
         this.konvaGroup = new Konva.Group({
             x: this.x,
@@ -47,23 +48,28 @@ class Robot {
     }
 
     pickUpBeeper() {
-        this.#hasBeeper = true
-        this.beeper.visible(true)
+        if (this.world.hasBeeperAt(this.x, this.y)) {
+            this.world.removeBeeperAt(this.x, this.y)
+            this.#hasBeeper = true
+            this.beeper.visible(true)
+        }
+        else
+            throw new Error("Robot malfunction: There is no beeper here!")
     }
 
-    move() {
+    move(numSteps) {
         if (this.getDirection() == "up")
-            this.y -= 50
+            this.y -= 50*numSteps
         if (this.getDirection() == "down")
-            this.y += 50
+            this.y += 50*numSteps
         if (this.getDirection() == "left")
-            this.x -= 50
+            this.x -= 50*numSteps
         if (this.getDirection() == "right")
-            this.x += 50
+            this.x += 50*numSteps
 
         return playTween({
             node: this.konvaGroup,
-            duration: 0.5,
+            duration: 0.5*numSteps*(100/this.speed),
             x: this.x,
             y: this.y
         })
@@ -75,7 +81,7 @@ class Robot {
 
         return playTween({
             node: this.konvaGroup,
-            duration: 0.5,
+            duration: 0.5*(100/this.speed),
             rotation: this.#rotation
         })
     }

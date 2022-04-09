@@ -17,6 +17,23 @@ class World {
             y: y,
             konvaObject: beeper
         })
-
     }
+
+    hasBeeperAt(x, y) {
+        for (let i = 0; i < this.beepers.length; i++) {
+            if (this.beepers[i].x == x && this.beepers[i].y == y)
+                return true
+        }
+        return false
+    }
+
+    removeBeeperAt(x, y) {
+        for (let i = 0; i < this.beepers.length; i++) {
+            if (this.beepers[i].x == x && this.beepers[i].y == y) {
+                this.beepers[i].konvaObject.destroy()
+                this.beepers.splice(i, 1)
+            }
+        }
+    }
+
 }
